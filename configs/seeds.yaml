@@ -1,0 +1,11 @@
+# Fixed seeds -- see protocol document, Section 1 Step 1: "Fix a random
+# seed and a fixed shard order for each notation format. Reuse this exact
+# ordering for every architecture in Experiment 2.5 so architecture
+# differences are never confounded with a different random data draw."
+#
+# Do not change these once real runs start. If you need a different seed
+# for a new experiment, add a new key -- don't repurpose an existing one.
+data_shard_order_abc: 20260801
+data_shard_order_midi: 20260802
+composition_sweep_lhs: 42
+niah_needle_placement: 7

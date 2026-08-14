@@ -1,0 +1,24 @@
+# Real-scale config -- see protocol document, Section 1, "Compute budget
+# for this protocol" table: 0.6B params (~Qwen3-0.6B / Qwen2.5-0.5B scale),
+# 20 tokens/param (Chinchilla-optimal), 4B Phase 1 + 8B Phase 2 tokens per
+# model, checkpointed every 0.8B tokens (10 checkpoints).
+model:
+  architecture: transformer
+  n_layer: 24
+  n_embd: 1024
+  n_head: 16
+  n_positions: 2048
+
+phase1:
+  total_tokens: 4_000_000_000
+  batch_size: 256          # tune to your hardware; this is a starting point
+  seq_len: 2048
+
+phase2:
+  total_tokens: 8_000_000_000
+  batch_size: 256
+  seq_len: 2048
+  checkpoint_every_tokens: 800_000_000
+  replay_fraction: 0.05    # drawn from this run's OWN Phase 1 shard mixture -- see Section 5 Step 3
+
+seed_ref: configs/seeds.yaml

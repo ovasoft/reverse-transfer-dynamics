@@ -1,0 +1,40 @@
+[project]
+name = "rtd"
+version = "0.1.0"
+description = "Reverse Transfer Dynamics: Quantifying Structural Bias in Music-to-Text Language Models -- starter codebase"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "scikit-learn>=1.3",
+    "statsmodels>=0.14",
+    "pyyaml>=6.0",
+    "tqdm>=4.66",
+    "music21>=9.1",
+    "miditok>=3.0",
+]
+
+[project.optional-dependencies]
+train = [
+    "torch>=2.2",
+    "transformers>=4.40",
+    "datasets>=2.19",
+    "accelerate>=0.30",
+]
+arch = [
+    "mamba-ssm>=2.0",   # Mamba adapter (needs CUDA to build kernels)
+    "xlstm>=1.0",        # sLSTM adapter
+]
+interp = [
+    "nnsight>=0.3",
+]
+evalh = [
+    "lm-eval>=0.4",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

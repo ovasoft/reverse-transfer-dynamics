@@ -1,0 +1,23 @@
+# Toy-scale config for tests, CI, and the Week 1 exercise. NOT a research
+# config -- see transformer_0.6b.yaml for the real scale from Section 1's
+# compute-budget table.
+model:
+  architecture: transformer
+  n_layer: 2
+  n_embd: 32
+  n_head: 2
+  n_positions: 128
+
+phase1:
+  total_tokens: 20000       # a few thousand steps at toy batch size
+  batch_size: 4
+  seq_len: 16
+
+phase2:
+  total_tokens: 20000
+  batch_size: 4
+  seq_len: 16
+  checkpoint_every_tokens: 5000
+  replay_fraction: 0.05
+
+seed_ref: configs/seeds.yaml
